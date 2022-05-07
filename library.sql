@@ -33,6 +33,5 @@ INSERT INTO book (name, owner_id, total, current) VALUES("英語耳",1,1,1);
 
 INSERT INTO rent (user_id, book_id,rent_flag) VALUES(2,1,1);
 UPDATE book SET current=current-1 WHERE id=1;
-
-UPDATE rent SET rent_flag=0 WHERE id=1;
-UPDATE book SET current=current+1 WHERE id=1;
+INSERT INTO rent (user_id, book_id,rent_flag) VALUES(1,2,1);
+UPDATE book SET current=current-1 WHERE id=2;
