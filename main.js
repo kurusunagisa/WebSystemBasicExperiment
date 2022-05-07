@@ -6,8 +6,14 @@ const db = new sqlite3.Database('test.db');
 
 app.set('view engine', 'ejs');
 
-app.get("/goods", (req, res) => {
-    const sql = "SELECT * FROM goods;";
+//借りられている本の一覧
+app.get("/rent", (req, res) => {
+    
+});
+
+//本の一覧
+app.get("/book", (req, res) => {
+    const sql = "SELECT * FROM book;";
     db.serialize(() => {
         db.all(sql, (error, row) => {
             if (error) {
