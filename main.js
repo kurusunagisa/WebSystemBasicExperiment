@@ -20,7 +20,6 @@ app.get("/rent", (req, res) => {
     } else {
         sql = "SELECT rent.id, user.name AS user_name, book.name AS book_name FROM rent INNER JOIN user ON user.id=rent.user_id INNER JOIN book ON book.id=rent.book_id WHERE rent.rent_flag=1 AND rent.user_id="+ user_id +" AND rent.book_id="+ book_id +";";
     }
-    console.log(sql)
     db.serialize(() => {
         db.all(sql, (error, row) => {
             if (error) {
@@ -28,7 +27,6 @@ app.get("/rent", (req, res) => {
                     mes: "sqliteがエラーを返しました。"
                 });
             }
-            console.log(row);
             res.render('rent', { data: row });
         });
     });
@@ -44,7 +42,6 @@ app.get("/book", (req, res) => {
                     mes: "sqliteがエラーを返しました。"
                 });
             }
-            console.log(row);
             res.render('book', { data: row });
         });
     });
